@@ -2,6 +2,7 @@ const table = document.getElementById('schoolTable');
 const tbody = table.querySelector('tbody');
 const header = document.getElementById('devHeader');
 const searchBox = document.getElementById('searchBox');
+const filterCheckboxes = document.querySelectorAll('#filterSex input[type="checkbox"]');
 let descending = true;
 
 // 偏差値ソート
@@ -23,16 +24,28 @@ header.addEventListener('click', () => {
   sortByDev();
 });
 
-// 検索機能
-searchBox.addEventListener('input', () => {
+// 検索と性別絞り込み
+function filterTable() {
   const keyword = searchBox.value.trim();
+  const selectedSex = Array.from(filterCheckboxes)
+    .filter(cb => cb.checked)
+    .map(cb => cb.value);
+
   Array.from(tbody.querySelectorAll('tr')).forEach(tr => {
-    const nameCell = tr.cells[1].textContent;
-    tr.style.display = nameCell.includes(keyword) ? '' : 'none';
+    const name = tr.cells[1].textContent;
+    const sex = tr.dataset.sex;
+    const matchKeyword = name.includes(keyword);
+    const matchSex = selectedSex.includes(sex);
+    tr.style.display = matchKeyword && matchSex ? '' : 'none';
   });
+
+  // 順位再計算
   const visible = Array.from(tbody.querySelectorAll('tr')).filter(tr => tr.style.display !== 'none');
   visible.forEach((tr, i) => tr.cells[0].textContent = i + 1);
-});
+}
+
+searchBox.addEventListener('input', filterTable);
+filterCheckboxes.forEach(cb => cb.addEventListener('change', filterTable));
 
 // モーダル
 const modal = document.getElementById('modal');
