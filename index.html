@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>私立中学 検索付き偏差値一覧（2025年）</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>私立中学 検索付き偏差値一覧</h1>
+  <input type="text" id="searchBox" placeholder="学校名で検索（例：麻布中学校）" style="width: 60%; padding: 8px; margin-bottom: 20px;">
+  <table class="school-table" id="schoolTable">
+    <thead>
+      <tr>
+        <th>順位</th>
+        <th>学校名・補足</th>
+        <th id="devHeader" style="cursor:pointer;">偏差値 ▼</th>
+        <th>性別区分</th>
+        <th>所在地</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 検索対象データのサンプル -->
+      <tr>
+        <td>1</td>
+        <td>麻布中学校<br><small>自由な校風で東大合格者数もトップクラス。</small></td>
+        <td>68</td>
+        <td>男子校</td>
+        <td>東京都港区</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>桜蔭中学校<br><small>御三家女子校。東大進学率が非常に高い。</small></td>
+        <td>72</td>
+        <td>女子校</td>
+        <td>東京都文京区</td>
+      </tr>
+      <!-- 他データが同様に続きます -->
+    </tbody>
+  </table>
+
+  <script>
+    const table = document.getElementById('schoolTable');
+    const tbody = table.querySelector('tbody');
+    const header = document.getElementById('devHeader');
+    const searchBox = document.getElementById('searchBox');
+    let descending = true;
+
+    function sortByDev() {
+      const trs = Array.from(tbody.querySelectorAll('tr'));
+      trs.sort((a, b) =>
+        descending
+          ? parseFloat(b.cells[2].textContent) - parseFloat(a.cells[2].textContent)
+          : parseFloat(a.cells[2].textContent) - parseFloat(b.cells[2].textContent)
+      );
+      trs.forEach((tr, i) => {
+        tr.cells[0].textContent = i + 1;
+        tbody.appendChild(tr);
+      });
+      header.textContent = `偏差値 ${descending ? '▼' : '▲'}`;
+    }
+
+    searchBox.addEventListener('input', () => {
+      const keyword = searchBox.value.trim();
+      Array.from(tbody.querySelectorAll('tr')).forEach(tr => {
+        const nameCell = tr.cells[1].textContent;
+        tr.style.display = nameCell.includes(keyword) ? '' : 'none';
+      });
+      // フィルタ後、順位を再計算
+      const visible = Array.from(tbody.querySelectorAll('tr')).filter(tr => tr.style.display !== 'none');
+      visible.forEach((tr, i) => tr.cells[0].textContent = i + 1);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      sortByDev();
+    });
+    header.addEventListener('click', () => {
+      descending = !descending;
+      sortByDev();
+    });
+  </script>
+</body>
+</html>
