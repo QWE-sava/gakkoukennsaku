@@ -1,141 +1,145 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日能研偏差値60以上の私立中学校一覧（2025年）</title>
-  <style>
-    body { font-family: sans-serif; padding: 20px; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #f0f0f0; cursor: pointer; }
-    tr:hover td { background: #f9f9f9; }
-    /* モーダル */
-    .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);}
-    .modal-content { background: #fff; margin: 10% auto; padding: 20px; width: 80%; max-width: 500px; border-radius: 8px; position: relative;}
-    .close-btn { position: absolute; top: 10px; right: 15px; font-size: 20px; cursor: pointer; color: #333;}
-    .school-name { color: #007acc; text-decoration: underline; cursor: pointer; }
-    #searchBox { width: 60%; padding: 8px; margin-bottom: 20px; }
-    #filterSex { margin-bottom: 20px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日能研偏差値60以上の私立中学校一覧（2025年）</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f0f0f0; cursor: pointer; }
+    tr:hover td { background: #f9f9f9; }
+    .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);}
+    .modal-content { background: #fff; margin: 10% auto; padding: 20px; width: 80%; max-width: 500px; border-radius: 8px; position: relative;}
+    .close-btn { position: absolute; top: 10px; right: 15px; font-size: 20px; cursor: pointer; color: #333;}
+    .school-name { color: #007acc; text-decoration: underline; cursor: pointer; }
+    #searchBox { width: 60%; padding: 8px; margin-bottom: 20px; }
+    #filterSex { margin-bottom: 20px; }
+  </style>
 </head>
 <body>
-  <h1>日能研偏差値60以上の私立中学校一覧（2025年）</h1>
+  <h1>日能研偏差値60以上の私立中学校一覧（2025年）</h1>
 
-  <input type="text" id="searchBox" placeholder="学校名で検索">
+  <input type="text" id="searchBox" placeholder="学校名で検索">
 
-  <div id="filterSex">
-    <label><input type="checkbox" value="男子校" checked> 男子校</label>
-    <label><input type="checkbox" value="女子校" checked> 女子校</label>
-    <label><input type="checkbox" value="共学校" checked> 共学校</label>
-  </div>
+  <div id="filterSex">
+    <label><input type="checkbox" value="男子校" checked> 男子校</label>
+    <label><input type="checkbox" value="女子校" checked> 女子校</label>
+    <label><input type="checkbox" value="共学校" checked> 共学校</label>
+  </div>
 
-  <table id="schoolTable">
-    <thead>
-      <tr>
-        <th>順位</th>
-        <th>学校名・説明</th>
-        <th id="devHeader">偏差値 ▼</th>
-        <th>性別区分</th>
-        <th>所在地</th>
-      </tr>
-    </thead>
-    <tbody>
-            <tr data-desc="男子御三家。難関大学進学実績トップ" data-dev="71" data-sex="男子校" data-place="東京都文京区">
-        <td></td><td class="school-name">開成中学校</td><td>71</td><td>男子校</td><td>東京都文京区</td>
-      </tr>
-      <tr data-desc="女子御三家。東大進学率が非常に高い" data-dev="70" data-sex="女子校" data-place="東京都文京区">
-        <td></td><td class="school-name">桜蔭中学校</td><td>70</td><td>女子校</td><td>東京都文京区</td>
-      </tr>
-      <tr data-desc="伝統校で学問と人格を重視" data-dev="68" data-sex="男子校" data-place="東京都新宿区">
-        <td></td><td class="school-name">早稲田中学校</td><td>68</td><td>男子校</td><td>東京都新宿区</td>
-      </tr>
-      <tr data-desc="自由な校風で東大合格者数トップクラス" data-dev="67" data-sex="男子校" data-place="東京都港区">
-        <td></td><td class="school-name">麻布中学校</td><td>67</td><td>男子校</td><td>東京都港区</td>
-      </tr>
-      <tr data-desc="難関大学進学実績が高い女子校" data-dev="66" data-sex="女子校" data-place="東京都豊島区">
-        <td></td><td class="school-name">豊島岡女子学園中学校</td><td>66</td><td>女子校</td><td>東京都豊島区</td>
-      </tr>
-      <tr data-desc="東大進学者多数、女子御三家に次ぐ名門" data-dev="65" data-sex="女子校" data-place="東京都千代田区">
-        <td></td><td class="school-name">女子学院中学校</td><td>65</td><td>女子校</td><td>東京都千代田区</td>
-      </tr>
-      <tr data-desc="理系指向が強く堅実な指導で知られる男子校" data-dev="64" data-sex="男子校" data-place="東京都新宿区">
-        <td></td><td class="school-name">海城中学校</td><td>64</td><td>男子校</td><td>東京都新宿区</td>
-      </tr>
-      <tr data-desc="共学校で進学実績も高い" data-dev="64" data-sex="共学校" data-place="千葉県市川市">
-        <td></td><td class="school-name">市川中学校</td><td>64</td><td>共学校</td><td>千葉県市川市</td>
-      </tr>
-      <tr data-desc="プロテスタント系キリスト教のミッションスクール" data-dev="61" data-sex="共学校" data-place="東京都港区">
-        <td></td><td class="school-name">明治学院中学校</td><td>61</td><td>共学校</td><td>東京都港区</td>
-      </tr>
-      <tr data-desc="カトリック系の女子校" data-dev="60" data-sex="女子校" data-place="神奈川県横浜市">
-        <td></td><td class="school-name">横浜雙葉中学校</td><td>60</td><td>女子校</td><td>神奈川県横浜市</td>
-      </tr>
-      <tr data-desc="カトリック系ミッションスクール" data-dev="60" data-sex="女子校" data-place="神奈川県藤沢市">
-        <td></td><td class="school-name">湘南白百合学園中学校</td><td>60</td><td>女子校</td><td>神奈川県藤沢市</td>
-      </tr>
+  <table id="schoolTable">
+    <thead>
+      <tr>
+        <th>順位</th>
+        <th>学校名</th>
+        <th id="devHeader">偏差値 ▼</th>
+        <th>性別区分</th>
+        <th>所在地</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 関東 -->
+      <tr data-desc="男子御三家。難関大学進学実績トップ" data-dev="71" data-sex="男子校" data-place="東京都文京区">
+        <td>1</td><td class="school-name">開成中学校</td><td>71</td><td>男子校</td><td>東京都文京区</td>
+      </tr>
+      <tr data-desc="女子御三家。東大進学率が非常に高い" data-dev="70" data-sex="女子校" data-place="東京都文京区">
+        <td>2</td><td class="school-name">桜蔭中学校</td><td>70</td><td>女子校</td><td>東京都文京区</td>
+      </tr>
+      <tr data-desc="伝統校で学問と人格を重視" data-dev="68" data-sex="男子校" data-place="東京都新宿区">
+        <td>3</td><td class="school-name">早稲田中学校</td><td>68</td><td>男子校</td><td>東京都新宿区</td>
+      </tr>
+      <tr data-desc="自由な校風で東大合格者数トップクラス" data-dev="67" data-sex="男子校" data-place="東京都港区">
+        <td>4</td><td class="school-name">麻布中学校</td><td>67</td><td>男子校</td><td>東京都港区</td>
+      </tr>
+      <tr data-desc="東大進学者多数、女子御三家に次ぐ名門" data-dev="65" data-sex="女子校" data-place="東京都千代田区">
+        <td>5</td><td class="school-name">女子学院中学校</td><td>65</td><td>女子校</td><td>東京都千代田区</td>
+      </tr>
+      <tr data-desc="難関大学進学実績が高い女子校" data-dev="66" data-sex="女子校" data-place="東京都豊島区">
+        <td>6</td><td class="school-name">豊島岡女子学園中学校</td><td>66</td><td>女子校</td><td>東京都豊島区</td>
+      </tr>
+      <tr data-desc="理系指向が強く堅実な指導で知られる男子校" data-dev="64" data-sex="男子校" data-place="東京都新宿区">
+        <td>7</td><td class="school-name">海城中学校</td><td>64</td><td>男子校</td><td>東京都新宿区</td>
+      </tr>
+      <tr data-desc="共学校で進学実績も高い" data-dev="64" data-sex="共学校" data-place="千葉県市川市">
+        <td>8</td><td class="school-name">市川中学校</td><td>64</td><td>共学校</td><td>千葉県市川市</td>
+      </tr>
+      <tr data-desc="共学校で進学実績も高い" data-dev="61" data-sex="共学校" data-place="東京都港区">
+        <td>9</td><td class="school-name">明治学院中学校</td><td>61</td><td>共学校</td><td>東京都港区</td>
+      </tr>
+      <tr data-desc="女子校、横浜の名門校" data-dev="60" data-sex="女子校" data-place="神奈川県横浜市">
+        <td>10</td><td class="school-name">横浜雙葉中学校</td><td>60</td><td>女子校</td><td>神奈川県横浜市</td>
+      </tr>
+      <tr data-desc="女子校、藤沢の伝統校" data-dev="60" data-sex="女子校" data-place="神奈川県藤沢市">
+        <td>11</td><td class="school-name">湘南白百合学園中学校</td><td>60</td><td>女子校</td><td>神奈川県藤沢市</td>
+      </tr>
 
-            <tr data-desc="京都御三家の男子校" data-dev="67" data-sex="男子校" data-place="京都府京都市">
-        <td></td><td class="school-name">洛南高等学校附属中学校</td><td>67</td><td>男子校</td><td>京都府京都市</td>
-      </tr>
-      <tr data-desc="男子校で進学校" data-dev="65" data-sex="男子校" data-place="大阪府大阪市">
-        <td></td><td class="school-name">大阪星光学院中学校</td><td>65</td><td>男子校</td><td>大阪府大阪市</td>
-      </tr>
-      <tr data-desc="関西屈指の女子校" data-dev="64" data-sex="女子校" data-place="兵庫県西宮市">
-        <td></td><td class="school-name">神戸女学院中学部</td><td>64</td><td>女子校</td><td>兵庫県西宮市</td>
-      </tr>
-      <tr data-desc="関西有数の女子進学校" data-dev="64" data-sex="女子校" data-place="京都府京田辺市">
-        <td></td><td class="school-name">同志社女子中学校</td><td>64</td><td>女子校</td><td>京都府京田辺市</td>
-      </tr>
-      <tr data-desc="共学校で進学実績も高い" data-dev="64" data-sex="共学校" data-place="兵庫県西宮市">
-        <td></td><td class="school-name">関西学院中学部</td><td>64</td><td>共学校</td><td>兵庫県西宮市</td>
-      </tr>
-      <tr data-desc="進学校として名門" data-dev="62" data-sex="男子校" data-place="兵庫県神戸市">
-        <td></td><td class="school-name">六甲学院中学校</td><td>62</td><td>男子校</td><td>兵庫県神戸市</td>
-      </tr>
-      <tr data-desc="女子校、関西の名門校" data-dev="61" data-sex="女子校" data-place="大阪府大阪市">
-        <td></td><td class="school-name">四天王寺中学校</td><td>61</td><td>女子校</td><td>大阪府大阪市</td>
-      </tr>
-      <tr data-desc="女子校、伝統のキリスト教系" data-dev="60" data-sex="女子校" data-place="大阪府大阪市">
-        <td></td><td class="school-name">帝塚山学院中学校</td><td>60</td><td>女子校</td><td>大阪府大阪市</td>
-      </tr>
+      <!-- 関西 -->
+      <tr data-desc="京都御三家の男子校" data-dev="67" data-sex="男子校" data-place="京都府京都市">
+        <td>12</td><td class="school-name">洛南高等学校附属中学校</td><td>67</td><td>男子校</td><td>京都府京都市</td>
+      </tr>
+      <tr data-desc="関西屈指の女子校" data-dev="64" data-sex="女子校" data-place="兵庫県西宮市">
+        <td>13</td><td class="school-name">神戸女学院中学部</td><td>64</td><td>女子校</td><td>兵庫県西宮市</td>
+      </tr>
+      <tr data-desc="関西有数の女子進学校" data-dev="64" data-sex="女子校" data-place="京都府京田辺市">
+        <td>14</td><td class="school-name">同志社女子中学校</td><td>64</td><td>女子校</td><td>京都府京田辺市</td>
+      </tr>
+      <tr data-desc="共学校で進学実績も高い" data-dev="64" data-sex="共学校" data-place="兵庫県西宮市">
+        <td>15</td><td class="school-name">関西学院中学部</td><td>64</td><td>共学校</td><td>兵庫県西宮市</td>
+      </tr>
+      <tr data-desc="男子校で進学校" data-dev="65" data-sex="男子校" data-place="大阪府大阪市">
+        <td>16</td><td class="school-name">大阪星光学院中学校</td><td>65</td><td>男子校</td><td>大阪府大阪市</td>
+      </tr>
+      <tr data-desc="進学校として名門" data-dev="62" data-sex="男子校" data-place="兵庫県神戸市">
+        <td>17</td><td class="school-name">六甲学院中学校</td><td>62</td><td>男子校</td><td>兵庫県神戸市</td>
+      </tr>
+      <tr data-desc="女子校、関西の名門校" data-dev="61" data-sex="女子校" data-place="大阪府大阪市">
+        <td>18</td><td class="school-name">四天王寺中学校</td><td>61</td><td>女子校</td><td>大阪府大阪市</td>
+      </tr>
+      <tr data-desc="女子校、伝統のキリスト教系" data-dev="60" data-sex="女子校" data-place="大阪府大阪市">
+        <td>19</td><td class="school-name">帝塚山学院中学校</td><td>60</td><td>女子校</td><td>大阪府大阪市</td>
+      </tr>
 
-            <tr data-desc="愛知県の男子進学校、医学部進学者が多い" data-dev="68" data-sex="男子校" data-place="愛知県名古屋市">
-        <td></td><td class="school-name">東海中学校</td><td>68</td><td>男子校</td><td>愛知県名古屋市</td>
-      </tr>
-      <tr data-desc="中高一貫の伝統ある進学校" data-dev="60" data-sex="男子校" data-place="愛知県名古屋市">
-        <td></td><td class="school-name">滝中学校</td><td>60</td><td>男子校</td><td>愛知県名古屋市</td>
-      </tr>
-      <tr data-desc="男女共学で進学実績が高い" data-dev="60" data-sex="共学校" data-place="愛知県名古屋市">
-        <td></td><td class="school-name">愛知中学校</td><td>60</td><td>共学校</td><td>愛知県名古屋市</td>
-      </tr>
-      <tr data-desc="私立女子校" data-dev="60" data-sex="女子校" data-place="愛知県名古屋市">
-        <td></td><td class="school-name">名古屋女子中学校</td><td>60</td><td>女子校</td><td>愛知県名古屋市</td>
-      </tr>
-      <tr data-desc="進学校として知られる共学校" data-dev="60" data-sex="共学校" data-place="愛知県名古屋市">
-        <td></td><td class="school-name">名古屋中学校</td><td>60</td><td>共学校</td><td>愛知県名古屋市</td>
-      </tr>
+      <!-- 中部 -->
+      <tr data-desc="名古屋の進学校" data-dev="68" data-sex="男子校" data-place="愛知県名古屋市">
+        <td>20</td><td class="school-name">東海中学校</td><td>68</td><td>男子校</td><td>愛知県名古屋市</td>
+      </tr>
+      <tr data-desc="男子校、名古屋の伝統校" data-dev="60" data-sex="男子校" data-place="愛知県名古屋市">
+        <td>21</td><td class="school-name">滝中学校</td><td>60</td><td>男子校</td><td>愛知県名古屋市</td>
+      </tr>
+      <tr data-desc="共学校、名古屋の進学校" data-dev="60" data-sex="共学校" data-place="愛知県名古屋市">
+        <td>22</td><td class="school-name">愛知中学校</td><td>60</td><td>共学校</td><td>愛知県名古屋市</td>
+      </tr>
+      <tr data-desc="女子校、名古屋の名門校" data-dev="60" data-sex="女子校" data-place="愛知県名古屋市">
+        <td>23</td><td class="school-name">名古屋女子中学校</td><td>60</td><td>女子校</td><td>愛知県名古屋市</td>
+      </tr>
+      <tr data-desc="共学校、名古屋の進学校" data-dev="60" data-sex="共学校" data-place="愛知県名古屋市">
+        <td>24</td><td class="school-name">名古屋中学校</td><td>60</td><td>共学校</td><td>愛知県名古屋市</td>
+      </tr>
 
-            <tr data-desc="キリスト教精神に基づいた女子校" data-dev="60" data-sex="女子校" data-place="福岡県福岡市">
-        <td></td><td class="school-name">福岡女学院中学校</td><td>60</td><td>女子校</td><td>福岡県福岡市</td>
-      </tr>
-      <tr data-desc="キリスト教系の進学校" data-dev="60" data-sex="共学校" data-place="福岡県福岡市">
-        <td></td><td class="school-name">西南学院中学校</td><td>60</td><td>共学校</td><td>福岡県福岡市</td>
-      </tr>
-    </tbody>
-  </table>
+      <!-- 九州 -->
+      <tr data-desc="女子校、福岡の名門校" data-dev="60" data-sex="女子校" data-place="福岡県福岡市">
+        <td>25</td><td class="school-name">福岡女学院中学校</td><td>60</td><td>女子校</td><td>福岡県福岡市</td>
+      </tr>
+      <tr data-desc="共学校、福岡の進学校" data-dev="60" data-sex="共学校" data-place="福岡県福岡市">
+        <td>26</td><td class="school-name">西南学院中学校</td><td>60</td><td>共学校</td><td>福岡県福岡市</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <h2 id="modal-name"></h2>
-      <p id="modal-desc"></p>
-      <p><strong>偏差値:</strong> <span id="modal-dev"></span></p>
-      <p><strong>性別区分:</strong> <span id="modal-sex"></span></p>
-      <p><strong>所在地:</strong> <span id="modal-place"></span></p>
-    </div>
-  </div>
+  <!-- モーダル -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2 id="modal-name"></h2>
+      <p id="modal-desc"></p>
+      <p><strong>偏差値:</strong> <span id="modal-dev"></span></p>
+      <p><strong>性別区分:</strong> <span id="modal-sex"></span></p>
+      <p><strong>所在地:</strong> <span id="modal-place"></span></p>
+    </div>
+  </div>
 
-  <script src="school.js"></script>
+  <script src="school.js"></script>
 </body>
 </html>
