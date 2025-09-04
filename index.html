@@ -4,164 +4,175 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>偏差値60以上の私立中学校一覧（2025年）</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f0f0f0; cursor: pointer; }
+    tr:hover td { background: #f9f9f9; }
+    /* モーダル */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 9999; 
+      left: 0; top: 0; width: 100%; height: 100%; 
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background: #fff; margin: 10% auto; padding: 20px;
+      width: 80%; max-width: 500px; border-radius: 8px; position: relative;
+    }
+    .close-btn {
+      position: absolute; top: 10px; right: 15px; font-size: 20px;
+      cursor: pointer; color: #333;
+    }
+    .school-name { color: #007acc; text-decoration: underline; cursor: pointer; }
+    #searchBox { width: 60%; padding: 8px; margin-bottom: 20px; }
+  </style>
 </head>
 <body>
   <h1>偏差値60以上の私立中学校一覧（2025年）</h1>
-  <input type="text" id="searchBox" placeholder="学校名で検索（例：麻布中学校）" style="width: 60%; padding: 8px; margin-bottom: 20px;">
+  <input type="text" id="searchBox" placeholder="学校名で検索（例：麻布中学校）">
 
-  <table class="school-table" id="schoolTable">
+  <table id="schoolTable">
     <thead>
       <tr>
         <th>順位</th>
         <th>学校名・説明</th>
-        <th id="devHeader" style="cursor:pointer;">偏差値 ▼</th>
+        <th id="devHeader">偏差値 ▼</th>
         <th>性別区分</th>
         <th>所在地</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr data-desc="開成中学校は男子御三家。難関大学進学実績トップ。" data-dev="74" data-sex="男子校" data-place="東京都文京区">
         <td>1</td>
-        <td>麻布中学校<br><small>自由な校風で東大合格者数もトップクラス。</small></td>
-        <td>68</td>
+        <td class="school-name">開成中学校</td>
+        <td>74</td>
         <td>男子校</td>
-        <td>東京都港区</td>
+        <td>東京都文京区</td>
       </tr>
-      <tr>
+      <tr data-desc="御三家女子校。東大進学率が非常に高い。" data-dev="72" data-sex="女子校" data-place="東京都文京区">
         <td>2</td>
-        <td>桜蔭中学校<br><small>御三家女子校。東大進学率が非常に高い。</small></td>
+        <td class="school-name">桜蔭中学校</td>
         <td>72</td>
         <td>女子校</td>
         <td>東京都文京区</td>
       </tr>
-      <tr>
+      <tr data-desc="早稲田中学校は男子御三家の1つ。伝統校で学問と人格を重視。" data-dev="70" data-sex="男子校" data-place="東京都新宿区">
         <td>3</td>
-        <td>市川中学校<br><small>共学校で進学実績も高く、千葉県内屈指。</small></td>
+        <td class="school-name">早稲田中学校</td>
+        <td>70</td>
+        <td>男子校</td>
+        <td>東京都新宿区</td>
+      </tr>
+      <tr data-desc="自由な校風で東大合格者数もトップクラス。" data-dev="68" data-sex="男子校" data-place="東京都港区">
+        <td>4</td>
+        <td class="school-name">麻布中学校</td>
+        <td>68</td>
+        <td>男子校</td>
+        <td>東京都港区</td>
+      </tr>
+      <tr data-desc="共学校で進学実績も高く、千葉県内屈指。" data-dev="65" data-sex="共学校" data-place="千葉県市川市">
+        <td>5</td>
+        <td class="school-name">市川中学校</td>
         <td>65</td>
         <td>共学校</td>
         <td>千葉県市川市</td>
       </tr>
-      <tr>
-        <td>4</td>
-        <td>海城中学校<br><small>理系指向が強く、堅実な指導で知られる男子校。</small></td>
+      <tr data-desc="理系指向が強く、堅実な指導で知られる男子校。" data-dev="65" data-sex="男子校" data-place="東京都新宿区">
+        <td>6</td>
+        <td class="school-name">海城中学校</td>
         <td>65</td>
         <td>男子校</td>
         <td>東京都新宿区</td>
       </tr>
-      <tr>
-        <td>5</td>
-        <td>慶應義塾湘南藤沢中等部<br><small>慶應系列の共学校、多彩な教育プログラム。</small></td>
+      <tr data-desc="慶應義塾湘南藤沢中等部は慶應系列の共学校で、多彩な教育プログラム。" data-dev="65" data-sex="共学校" data-place="神奈川県藤沢市">
+        <td>7</td>
+        <td class="school-name">慶應義塾湘南藤沢中等部</td>
         <td>65</td>
         <td>共学校</td>
         <td>神奈川県藤沢市</td>
       </tr>
-      <tr>
-        <td>6</td>
-        <td>慶應義塾中等部<br><small>慶應系列の中核、進学と人格育成に強みあり。</small></td>
-        <td>65</td>
-        <td>共学校</td>
-        <td>東京都港区</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>慶應義塾普通部<br><small>慶應伝統の男子部、早期からの一貫教育。</small></td>
-        <td>65</td>
-        <td>男子校</td>
-        <td>神奈川県横浜市</td>
-      </tr>
-      <tr>
+      <tr data-desc="慶應義塾中等部は慶應系列の中核校、進学と人格育成に強みあり。" data-dev="65" data-sex="共学校" data-place="東京都港区">
         <td>8</td>
-        <td>渋谷教育学園渋谷中学校<br><small>グローバル教育で注目、共学校。</small></td>
+        <td class="school-name">慶應義塾中等部</td>
+        <td>65</td>
+        <td>共学校</td>
+        <td>東京都港区</td>
+      </tr>
+      <tr data-desc="慶應義塾普通部は慶應伝統の男子部、早期からの一貫教育。" data-dev="65" data-sex="男子校" data-place="神奈川県横浜市">
+        <td>9</td>
+        <td class="school-name">慶應義塾普通部</td>
+        <td>65</td>
+        <td>男子校</td>
+        <td>神奈川県横浜市</td>
+      </tr>
+      <tr data-desc="渋谷教育学園渋谷中学校はグローバル教育で注目される共学校。" data-dev="65" data-sex="共学校" data-place="東京都渋谷区">
+        <td>10</td>
+        <td class="school-name">渋谷教育学園渋谷中学校</td>
         <td>65</td>
         <td>共学校</td>
         <td>東京都渋谷区</td>
       </tr>
-      <tr>
-        <td>9</td>
-        <td>巣鴨中学校<br><small>伝統的な男子進学校、安定した進学力。</small></td>
+      <tr data-desc="巣鴨中学校は伝統的な男子進学校、安定した進学力。" data-dev="65" data-sex="男子校" data-place="東京都豊島区">
+        <td>11</td>
+        <td class="school-name">巣鴨中学校</td>
         <td>65</td>
         <td>男子校</td>
         <td>東京都豊島区</td>
       </tr>
-      <tr>
-        <td>10</td>
-        <td>芝中学校<br><small>文武両道、伝統の男子校。</small></td>
+      <tr data-desc="芝中学校は文武両道、伝統の男子校。" data-dev="60" data-sex="男子校" data-place="東京都港区">
+        <td>12</td>
+        <td class="school-name">芝中学校</td>
         <td>60</td>
         <td>男子校</td>
         <td>東京都港区</td>
       </tr>
-      <tr>
-        <td>11</td>
-        <td>本郷中学校<br><small>自律を重んじる男子校。</small></td>
+      <tr data-desc="本郷中学校は自律を重んじる男子校。" data-dev="60" data-sex="男子校" data-place="東京都豊島区">
+        <td>13</td>
+        <td class="school-name">本郷中学校</td>
         <td>60</td>
         <td>男子校</td>
         <td>東京都豊島区</td>
       </tr>
-      <tr>
-        <td>12</td>
-        <td>フェリス女学院中学校<br><small>横浜屈指の名門女子校。</small></td>
+      <tr data-desc="フェリス女学院中学校は横浜屈指の名門女子校。" data-dev="60" data-sex="女子校" data-place="神奈川県横浜市">
+        <td>14</td>
+        <td class="school-name">フェリス女学院中学校</td>
         <td>60</td>
         <td>女子校</td>
         <td>神奈川県横浜市</td>
       </tr>
-      <tr>
-        <td>13</td>
-        <td>東洋英和女学院中等部<br><small>伝統あるキリスト教女子校。</small></td>
+      <tr data-desc="東洋英和女学院中等部は伝統あるキリスト教女子校。" data-dev="60" data-sex="女子校" data-place="東京都港区">
+        <td>15</td>
+        <td class="school-name">東洋英和女学院中等部</td>
         <td>60</td>
         <td>女子校</td>
         <td>東京都港区</td>
       </tr>
-      <tr>
-        <td>14</td>
-        <td>青山学院中等部<br><small>国際色豊かな共学校。</small></td>
+      <tr data-desc="青山学院中等部は国際色豊かな共学校。" data-dev="60" data-sex="共学校" data-place="東京都渋谷区">
+        <td>16</td>
+        <td class="school-name">青山学院中等部</td>
         <td>60</td>
         <td>共学校</td>
         <td>東京都渋谷区</td>
       </tr>
-      <!-- 必要に応じて追加可能 -->
     </tbody>
   </table>
 
-  <script>
-    const table = document.getElementById('schoolTable');
-    const tbody = table.querySelector('tbody');
-    const header = document.getElementById('devHeader');
-    const searchBox = document.getElementById('searchBox');
-    let descending = true;
+  <!-- モーダル -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2 id="modal-name"></h2>
+      <p id="modal-desc"></p>
+      <p><strong>偏差値:</strong> <span id="modal-dev"></span></p>
+      <p><strong>性別区分:</strong> <span id="modal-sex"></span></p>
+      <p><strong>所在地:</strong> <span id="modal-place"></span></p>
+    </div>
+  </div>
 
-    function sortByDev() {
-      const trs = Array.from(tbody.querySelectorAll('tr'));
-      trs.sort((a, b) =>
-        descending
-          ? parseFloat(b.cells[2].textContent) - parseFloat(a.cells[2].textContent)
-          : parseFloat(a.cells[2].textContent) - parseFloat(b.cells[2].textContent)
-      );
-      trs.forEach((tr, i) => {
-        tr.cells[0].textContent = i + 1;
-        tbody.appendChild(tr);
-      });
-      header.textContent = `偏差値 ${descending ? '▼' : '▲'}`;
-    }
-
-    searchBox.addEventListener('input', () => {
-      const keyword = searchBox.value.trim();
-      Array.from(tbody.querySelectorAll('tr')).forEach(tr => {
-        const nameCell = tr.cells[1].textContent;
-        tr.style.display = nameCell.includes(keyword) ? '' : 'none';
-      });
-      // フィルタ後に順位を再計算
-      const visible = Array.from(tbody.querySelectorAll('tr')).filter(tr => tr.style.display !== 'none');
-      visible.forEach((tr, i) => tr.cells[0].textContent = i + 1);
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-      sortByDev();
-    });
-    header.addEventListener('click', () => {
-      descending = !descending;
-      sortByDev();
-    });
-  </script>
+  <!-- 外部JS -->
+  <script src="school.js"></script>
 </body>
 </html>
