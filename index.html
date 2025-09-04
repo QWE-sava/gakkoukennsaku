@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>私立中学 検索付き偏差値一覧（2025年）</title>
+  <title>偏差値60以上の私立中学校一覧（2025年）</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>私立中学 検索付き偏差値一覧</h1>
+  <h1>偏差値60以上の私立中学校一覧（2025年）</h1>
   <input type="text" id="searchBox" placeholder="学校名で検索（例：麻布中学校）" style="width: 60%; padding: 8px; margin-bottom: 20px;">
+
   <table class="school-table" id="schoolTable">
     <thead>
       <tr>
         <th>順位</th>
-        <th>学校名・補足</th>
+        <th>学校名・説明</th>
         <th id="devHeader" style="cursor:pointer;">偏差値 ▼</th>
         <th>性別区分</th>
         <th>所在地</th>
       </tr>
     </thead>
     <tbody>
-      <!-- 検索対象データのサンプル -->
       <tr>
         <td>1</td>
         <td>麻布中学校<br><small>自由な校風で東大合格者数もトップクラス。</small></td>
@@ -35,7 +35,91 @@
         <td>女子校</td>
         <td>東京都文京区</td>
       </tr>
-      <!-- 他データが同様に続きます -->
+      <tr>
+        <td>3</td>
+        <td>市川中学校<br><small>共学校で進学実績も高く、千葉県内屈指。</small></td>
+        <td>65</td>
+        <td>共学校</td>
+        <td>千葉県市川市</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>海城中学校<br><small>理系指向が強く、堅実な指導で知られる男子校。</small></td>
+        <td>65</td>
+        <td>男子校</td>
+        <td>東京都新宿区</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>慶應義塾湘南藤沢中等部<br><small>慶應系列の共学校、多彩な教育プログラム。</small></td>
+        <td>65</td>
+        <td>共学校</td>
+        <td>神奈川県藤沢市</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>慶應義塾中等部<br><small>慶應系列の中核、進学と人格育成に強みあり。</small></td>
+        <td>65</td>
+        <td>共学校</td>
+        <td>東京都港区</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>慶應義塾普通部<br><small>慶應伝統の男子部、早期からの一貫教育。</small></td>
+        <td>65</td>
+        <td>男子校</td>
+        <td>神奈川県横浜市</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>渋谷教育学園渋谷中学校<br><small>グローバル教育で注目、共学校。</small></td>
+        <td>65</td>
+        <td>共学校</td>
+        <td>東京都渋谷区</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>巣鴨中学校<br><small>伝統的な男子進学校、安定した進学力。</small></td>
+        <td>65</td>
+        <td>男子校</td>
+        <td>東京都豊島区</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>芝中学校<br><small>文武両道、伝統の男子校。</small></td>
+        <td>60</td>
+        <td>男子校</td>
+        <td>東京都港区</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>本郷中学校<br><small>自律を重んじる男子校。</small></td>
+        <td>60</td>
+        <td>男子校</td>
+        <td>東京都豊島区</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>フェリス女学院中学校<br><small>横浜屈指の名門女子校。</small></td>
+        <td>60</td>
+        <td>女子校</td>
+        <td>神奈川県横浜市</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>東洋英和女学院中等部<br><small>伝統あるキリスト教女子校。</small></td>
+        <td>60</td>
+        <td>女子校</td>
+        <td>東京都港区</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>青山学院中等部<br><small>国際色豊かな共学校。</small></td>
+        <td>60</td>
+        <td>共学校</td>
+        <td>東京都渋谷区</td>
+      </tr>
+      <!-- 必要に応じて追加可能 -->
     </tbody>
   </table>
 
@@ -66,7 +150,7 @@
         const nameCell = tr.cells[1].textContent;
         tr.style.display = nameCell.includes(keyword) ? '' : 'none';
       });
-      // フィルタ後、順位を再計算
+      // フィルタ後に順位を再計算
       const visible = Array.from(tbody.querySelectorAll('tr')).filter(tr => tr.style.display !== 'none');
       visible.forEach((tr, i) => tr.cells[0].textContent = i + 1);
     });
